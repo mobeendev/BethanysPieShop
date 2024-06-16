@@ -1,31 +1,25 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using BethanysPieShop.Models;
+using BethanysPieShop.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
-namespace BethanysPieShop.Controllers;
-
-public class HomeController : Controller
+namespace BethanysPieShop.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly IPieRepository _pieRepository;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public HomeController(IPieRepository pieRepository)
+        {
+            _pieRepository = pieRepository;
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public ViewResult Index()
+        {
+            var piesOfTheWeek = _pieRepository.PiesOfTheWeek;
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var homeViewModel = new HomeViewModel(piesOfTheWeek);
+
+            return View(homeViewModel);
+        }
     }
 }
