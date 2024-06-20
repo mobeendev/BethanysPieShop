@@ -38,7 +38,7 @@ x64/
 *Db.*
 *db.*
 .builds
-
+BethanysPieShop.db
 # Visual C++ cache files
 ipch/
 *.aps
