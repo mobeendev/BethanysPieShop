@@ -13,6 +13,7 @@
         public bool IsPieOfTheWeek { get; set; }
         public bool InStock { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; } = default!;
+        // public Category Category { get; set; } = d .efault!;
+        public Category? Category { get; set; }
     }
 }

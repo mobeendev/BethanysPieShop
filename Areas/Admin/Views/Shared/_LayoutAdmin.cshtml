@@ -69,7 +69,24 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Manage Pies :</h6>
-                        <a class="collapse-item" href="utilities-color.html">View All</a>
+                        <a asp-areas="Admin" asp-controller="Pie" asp-action="Index" class="collapse-item">View All</a>
+                        <a class="collapse-item" href="utilities-color.html">Create New</a>
+                        <a class="collapse-item" href="utilities-border.html">Delete</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCat"
+                    aria-expanded="true" aria-controls="collapseCat">
+                    <i class="fas fa-fw fa-fw fa-cog"></i>
+                    <span>Categories</span>
+                </a>
+                <div id="collapseCat" class="collapse" aria-labelledby="headingCats" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage Categories :</h6>
+                        <a asp-areas="Admin" asp-controller="Category" asp-action="Index" class="collapse-item">View
+                            All</a>
                         <a class="collapse-item" href="utilities-color.html">Create New</a>
                         <a class="collapse-item" href="utilities-border.html">Delete</a>
                     </div>

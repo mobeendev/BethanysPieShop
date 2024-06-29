@@ -1,12 +1,12 @@
-@model IEnumerable<Pie>
+@model IEnumerable<Category>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Pis List</h1>
+    <h1 class="h3 mb-2 text-gray-800">Categories List</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Existing Pies List</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Existing Categories List</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -15,28 +15,23 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Is Pie of Week</th>
-                            <th>Category</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Is Pie of Week</th>
-                            <th>Category</th>
+                            <th>Description</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach (var pie in Model)
+                        @foreach (var category in Model)
                         {
                             <tr>
-                                <td>@pie.PieId</td>
-                                <td>@pie.Name</td>
-                                <td>@pie.Price</td>
-                                <td>@pie.IsPieOfTheWeek</td>
+                                <td>@category.CategoryId</td>
+                                <td>@category.CategoryName</td>
+                                <td>@category.Description</td>
                             </tr>
                         }
                     </tbody>
