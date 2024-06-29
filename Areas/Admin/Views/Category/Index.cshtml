@@ -32,6 +32,16 @@
                                 <td>@category.CategoryId</td>
                                 <td>@category.CategoryName</td>
                                 <td>@category.Description</td>
+                                <td>
+                                    <a asp-areas="Admin" asp-controller="Category" asp-action="Detail"
+                                        asp-route-id="@category.CategoryId" class="collapse-item">View
+                                    </a>
+                                    <a asp-areas="Admin" asp-controller="Pie" asp-action="Edit"
+                                        class="collapse-item">Edit</a>
+
+                                    <a asp-areas="Admin" asp-controller="Pie" asp-action="Edit" class="collapse-item">
+                                        Delete</a>
+                                </td>
                             </tr>
                         }
                     </tbody>
