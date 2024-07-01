@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace BethanysPieShop.Controllers.Admin
 {
     [Area("Admin")]
@@ -27,6 +28,72 @@ namespace BethanysPieShop.Controllers.Admin
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("CategoryName,Description")] Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(category);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(category);
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var category = await _context.Categories.FindAsync(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return View(category);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryName,Description, CategoryId")] Category updatedCategory)
+        {
+            if (id != updatedCategory.CategoryId)
+            {
+                return NotFound();
+            }
+            var category = await _context.Categories.FindAsync(id);
+            Console.WriteLine(category);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                category.CategoryName = updatedCategory.CategoryName;
+                category.Description = updatedCategory.Description;
+                _context.Update(category);
+                await _context.SaveChangesAsync();
+        
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(updatedCategory);
+        }
+
+         private bool CategoryExists(long id)
+        {
+            return _context.Categories.Any(e => e.CategoryId == id);
+        }
+
 
         public IActionResult Detail(int? id)
         {

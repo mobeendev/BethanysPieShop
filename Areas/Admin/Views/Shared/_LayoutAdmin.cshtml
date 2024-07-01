@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"  asp-areas="Admin" asp-controller="Dashboard" asp-action="Index">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" asp-areas="Admin" asp-controller="Dashboard" asp-action="Index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -71,7 +71,6 @@
                         <h6 class="collapse-header">Manage Pies :</h6>
                         <a asp-areas="Admin" asp-controller="Pie" asp-action="Index" class="collapse-item">View All</a>
                         <a class="collapse-item" href="utilities-color.html">Create New</a>
-                        <a class="collapse-item" href="utilities-border.html">Delete</a>
                     </div>
                 </div>
             </li>
@@ -87,8 +86,7 @@
                         <h6 class="collapse-header">Manage Categories :</h6>
                         <a asp-areas="Admin" asp-controller="Category" asp-action="Index" class="collapse-item">View
                             All</a>
-                        <a class="collapse-item" href="utilities-color.html">Create New</a>
-                        <a class="collapse-item" href="utilities-border.html">Delete</a>
+                        <a class="collapse-item" asp-areas="Admin" asp-controller="Category" asp-action="Create" >Create New</a>
                     </div>
                 </div>
             </li>
