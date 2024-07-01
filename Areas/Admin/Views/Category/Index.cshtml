@@ -7,6 +7,13 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Existing Categories List</h6>
+
+             <div class="row">
+                <div class="ml-auto">
+                    <a asp-areas="Admin" asp-controller="Category" asp-action="Create"  class="form-control btn btn-secondary">Add New</a>
+                </div>
+            </div>
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -16,6 +23,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -23,6 +31,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Action</th>                            
                         </tr>
                     </tfoot>
                     <tbody>
@@ -36,11 +45,12 @@
                                     <a asp-areas="Admin" asp-controller="Category" asp-action="Detail"
                                         asp-route-id="@category.CategoryId" class="collapse-item">View
                                     </a>
-                                    <a asp-areas="Admin" asp-controller="Pie" asp-action="Edit"
+                                    <a asp-areas="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="@category.CategoryId"
                                         class="collapse-item">Edit</a>
 
-                                    <a asp-areas="Admin" asp-controller="Pie" asp-action="Edit" class="collapse-item">
-                                        Delete</a>
+                                          <a asp-areas="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@category.CategoryId"
+                                        class="collapse-item danger">Delete</a>
+
                                 </td>
                             </tr>
                         }
