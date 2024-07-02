@@ -1,6 +1,7 @@
 using BethanysPieShop.Models;
 using BethanysPieShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BethanysPieShop.Controllers.Admin
 {
@@ -29,6 +30,9 @@ namespace BethanysPieShop.Controllers.Admin
 
         public IActionResult Create()
         {
+
+            ViewData["CategoryId"] = new SelectList(_bethanysPieShopDbContext.Categories, "CategoryId", "CategoryName");
+
             return View();
         }
     }
