@@ -11,7 +11,9 @@
             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-back"></i> Back</a>
     </div>
 
-
+    <div>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-4 ml-10 py-3 position-relative">
             <form asp-action="Create">

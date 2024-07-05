@@ -82,14 +82,14 @@ namespace BethanysPieShop.Controllers.Admin
                 category.Description = updatedCategory.Description;
                 _context.Update(category);
                 await _context.SaveChangesAsync();
-        
+
                 return RedirectToAction(nameof(Index));
             }
 
             return View(updatedCategory);
         }
 
-         private bool CategoryExists(long id)
+        private bool CategoryExists(long id)
         {
             return _context.Categories.Any(e => e.CategoryId == id);
         }
