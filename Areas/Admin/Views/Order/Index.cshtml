@@ -1,0 +1,60 @@
+@model IEnumerable<Order>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Orders List</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Orders Listing</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Zip Code</th>
+                            <th>Contact</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Zip Code</th>
+                            <th>Contact</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td>@order.OrderId</td>
+                                <td>@order.FirstName @order.LastName</td>
+                                <td>@order.Email</td>
+                                <td>@order.ZipCode</td>
+                                <td>@order.PhoneNumber</td>
+                                <td>@order.OrderTotal</td>
+                                <td>
+                                    <a asp-areas="Admin" asp-controller="Order" asp-action="Detail"
+                                        asp-route-id="@order.OrderId" class="collapse-item">View
+                                    </a>
+                                    <a asp-areas="Admin" asp-controller="Order" asp-action="Delete"
+                                        asp-route-id="@order.OrderId" class="collapse-item danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
