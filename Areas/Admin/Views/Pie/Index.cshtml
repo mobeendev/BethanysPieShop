@@ -25,6 +25,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Is Pie of Week</th>
+                            <th>Category</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,6 +35,8 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Is Pie of Week</th>
+                                                        <th>Category</th>
+
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -45,6 +48,7 @@
                                 <td>@pie.Name</td>
                                 <td>@pie.Price</td>
                                 <td>@pie.IsPieOfTheWeek</td>
+                                <td>@pie.Category.CategoryName</td>
                                 <td>
                                 <a asp-areas="Admin" asp-controller="Pie" asp-action="Detail"
                                     asp-route-id="@pie.PieId" class="collapse-item">View

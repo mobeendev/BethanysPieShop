@@ -18,6 +18,9 @@ namespace BethanysPieShop.Controllers.Admin
         public IActionResult Index()
         {
             var allPies = _context.Pies.ToList();
+            var categories = _context.Categories.ToList();
+            ViewData["categories"] = categories;
+
             return View(allPies);
         }
 

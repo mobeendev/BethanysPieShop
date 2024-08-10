@@ -1,5 +1,6 @@
 ﻿using BethanysPieShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BethanysPieShop.Controllers
 {
@@ -14,6 +15,7 @@ namespace BethanysPieShop.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();

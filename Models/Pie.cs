@@ -14,7 +14,8 @@ namespace BethanysPieShop.Models
         public string? LongDescription { get; set; }
         public string? AllergyInformation { get; set; }
 
-        [Required(ErrorMessage = "Please enter the price in $:")]
+        // [Required()]
+        [Required(ErrorMessage = "Please enter the price in $:", AllowEmptyStrings = false)]
         [Display(Name = "Price in $")]
         public decimal Price { get; set; }
         public string? ImageUrl { get; set; }

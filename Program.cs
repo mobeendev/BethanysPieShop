@@ -1,8 +1,16 @@
 using BethanysPieShop.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("BethanysPieShopDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
+
+builder.Services.AddDbContext<BethanysPieShopDbContext>(options => options.UseSqlite(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BethanysPieShopDbContext>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -16,11 +24,10 @@ builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
-{
-    options.UseSqlite(
-        builder.Configuration["ConnectionStrings:BethanysPieShopDbContextConnection"]);
-});
+
+
+
+
 
 var app = builder.Build();
 
@@ -38,6 +45,7 @@ app.UseSession();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
