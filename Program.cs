@@ -22,12 +22,10 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddRazorPages();
-
-
-
-
-
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizePage("/CheckoutPage");
+});
 
 var app = builder.Build();
 
